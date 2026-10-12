@@ -12,7 +12,7 @@
 2. 在 DSH 左侧点击 **插件 → 右上角添加插件**，粘贴下面地址并点击安装：
 
    ```text
-   https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/download/v0.14.0/cui-dsh-plugin-0.14.0.tgz
+   https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/download/v1.0.0/cui-dsh-plugin-1.0.0.tgz
    ```
 
 3. 安装完成后点 **立即启用**；也可正常退出并重新打开 DSH。在左侧打开 **Cui Group**，连接课题组账号，选择模型并应用。

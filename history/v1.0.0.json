@@ -1,0 +1,4 @@
+{
+  "payload": "{\"package\":\"cui-dsh-plugin\",\"version\":\"1.0.0\",\"sourceCommit\":\"445658eb84e862fe73637334903cfd114b55907b\",\"expiresAt\":\"2027-10-12T18:39:57.670Z\",\"dsh\":{\"min\":\"0.2.0-rc.2\",\"max\":\"0.2.0-rc.2\"},\"asset\":{\"url\":\"https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/download/v1.0.0/cui-dsh-plugin-1.0.0.tgz\",\"sha256\":\"b8e4ae42458b1757b763b8145735102544671e7ed115049292a468988959a08e\",\"bytes\":128173}}",
+  "signature": "QB4BPaDqWty7/+AXZCPFxdAWZ2Nvc0MiWDzU+PoTctXXk8O2/VcoYR5St1Tip3xI8ILH82OW9z0nXRPqf1CXCg=="
+}
