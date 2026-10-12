@@ -5,12 +5,15 @@
 ## 安装
 
 1. 先安装官方 DeepSeek Harness Desktop **0.2.0-rc.2**。
-2. 下载对应安装器，**完整解压**：
-   - [Windows 安装器](https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/latest/download/Cui-Group-Windows-installer.zip)：双击 `Install-Cui-Group.cmd`。按提示从 DSH 应用菜单或托盘选择退出，再继续安装。
-   - [macOS 安装器](https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/latest/download/Cui-Group-macOS-installer.zip)：双击 `Install-Cui-Group.command`，确认后自动退出安装。
-3. 安装后在 DSH 左侧打开 **Cui Group**，连接课题组账号，选择模型并应用。
+2. 在 DSH 左侧点击 **插件 → 右上角添加插件**，粘贴下面地址并点击安装：
 
-无需管理员权限、另装 Node.js、解压到官方应用目录或拖入客户端。Windows 能识别自定义盘符；未打开 DSH 时按提示选择官方 EXE。[全部安装包](https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/latest)。
+   ```text
+   https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/latest/download/cui-dsh-plugin.tgz
+   ```
+
+3. 安装完成后点 **立即启用**；也可正常退出并重新打开 DSH。在左侧打开 **Cui Group**，连接课题组账号，选择模型并应用。
+
+这是公开安装包链接，不是私有源码仓库或本仓库首页。不需要 GitHub 账号、下载解压或另装 Node.js。macOS 官方添加界面安装/启用已实测，Windows 官方 CLI 链接安装已实测；ZIP 安装器仍保留为备选：[Windows](https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/latest/download/Cui-Group-Windows-installer.zip) / [macOS](https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/latest/download/Cui-Group-macOS-installer.zip)。
 
 ## 使用与更新
 
