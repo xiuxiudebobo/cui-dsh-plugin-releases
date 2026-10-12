@@ -4,7 +4,11 @@
 
 ## 安装
 
-1. 先安装官方 DeepSeek Harness Desktop **0.2.0-rc.2**。
+1. 下载并安装官方 DeepSeek Harness Desktop **0.2.0-rc.2**：
+   - [Windows x64 官方安装包](https://download.deepseek.com/dsh-desk/bin/win-x64/deepseek-harness-0.2.0-rc.2-win-x64.exe)：运行 EXE 安装。
+   - [macOS Apple 芯片官方安装包](https://download.deepseek.com/dsh-desk/bin/mac-arm64/deepseek-harness-0.2.0-rc.2-mac-arm64.zip)：解压，将 DeepSeek Harness.app 放入“应用程序”。
+
+   已安装此版本的成员可以直接继续下一步。
 2. 在 DSH 左侧点击 **插件 → 右上角添加插件**，粘贴下面地址并点击安装：
 
    ```text
