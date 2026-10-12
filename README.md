@@ -15,6 +15,8 @@
 
 这是公开安装包链接，不是私有源码仓库或本仓库首页。不需要 GitHub 账号、下载解压或另装 Node.js。macOS 官方添加界面安装/启用已实测，Windows 官方 CLI 链接安装已实测；ZIP 安装器仍保留为备选：[Windows](https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/latest/download/Cui-Group-Windows-installer.zip) / [macOS](https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/latest/download/Cui-Group-macOS-installer.zip)。
 
+Windows 若报 `ERR_PNPM_UNEXPECTED_STORE`，说明原 Desktop 依赖链接自 pnpm v10。请用新版 Windows 安装器，按提示从菜单或托盘完全退出 DSH 后继续；它会备份并使用官方 pnpm v11 重建原依赖，再安装插件。失败会恢复旧依赖和配置，并显示具体报错。不会修改全局 pnpm 设置。
+
 ## 使用与更新
 
 - 默认用量为 7 天＋额度。科研资源按家族直接分层展示，选择“多选下载”后才显示选择圈；支持自定义保存目录。
