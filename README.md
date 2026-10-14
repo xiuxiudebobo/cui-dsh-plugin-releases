@@ -9,17 +9,33 @@
    - [macOS Apple 芯片官方安装包](https://download.deepseek.com/dsh-desk/bin/mac-arm64/deepseek-harness-0.2.0-rc.2-mac-arm64.zip)：解压，将 DeepSeek Harness.app 放入“应用程序”。
 
    已安装此版本的成员可以直接继续下一步。
-2. 在 DSH 左侧点击 **插件 → 右上角添加插件**，粘贴下面地址并点击安装：
+2. 下载对应系统的安装器 ZIP：[Windows 安装器 ZIP](https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/latest/download/Cui-Group-Windows-installer.zip) / [macOS 安装器 ZIP](https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/latest/download/Cui-Group-macOS-installer.zip)。完整解压后，Windows 双击 `Install-Cui-Group.cmd`（按提示从菜单或托盘完全退出 DSH 再继续）；macOS 双击 `Install-Cui-Group.command`。安装器会校验签名与 SHA256，并从本地文件安装。
 
-   ```text
-   https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/download/v1.0.3/cui-dsh-plugin-1.0.3.tgz
-   ```
+   **不要在“插件 → 添加插件”里粘贴 https 安装包链接。** DSH 当前的 pnpm 对远程链接可能写出缺少 integrity 的锁定记录（`ERR_PNPM_MISSING_TARBALL_INTEGRITY`），之后插件就无法再更新。
 
 3. 安装完成后点 **立即启用**；也可正常退出并重新打开 DSH。在左侧打开 **Cui Group**，连接课题组账号，选择模型并应用。
 
-这是公开安装包链接，不是私有源码仓库或本仓库首页。不需要 GitHub 账号、下载解压或另装 Node.js。macOS 官方添加界面安装/启用已实测，Windows 官方 CLI 链接安装已实测；ZIP 安装器仍保留为备选：[Windows](https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/latest/download/Cui-Group-Windows-installer.zip) / [macOS](https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/latest/download/Cui-Group-macOS-installer.zip)。
+不需要 GitHub 账号、管理员权限或另装 Node.js。下载安装器本身不等于已安装插件。
 
 Windows 若报 `ERR_PNPM_UNEXPECTED_STORE`，说明原 Desktop 依赖链接自 pnpm v10。请用新版 Windows 安装器，按提示从菜单或托盘完全退出 DSH 后继续；它会备份并使用官方 pnpm v11 重建原依赖，再安装插件。失败会恢复旧依赖和配置，并显示具体报错。不会修改全局 pnpm 设置。
+
+## 卡在 1.0.1 升不上
+
+若自动更新一直失败，或报 `ERR_PNPM_MISSING_TARBALL_INTEGRITY`（多见于从 0.14 升到 1.0.1、或曾粘贴过 https 安装链接的机器），运行下面一行命令安装已签名的 1.0.3。命令会先校验 SHA256（`1e6a684b521905273dbce8dad28c55f85a4f6aae9fef1a656073caf90e408ae2`），再用 DSH 自带的 `dsh plugin` 安装，并自动清理旧的远程链接锁定记录（先备份到 `~/.dsh/cui-group/backups`）。
+
+macOS（终端；会自动退出 DSH，完成后重新打开）：
+
+```bash
+V=1.0.3; H=1e6a684b521905273dbce8dad28c55f85a4f6aae9fef1a656073caf90e408ae2; T=$(mktemp -d) && cd "$T" && curl -fL -o p.tgz "https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/download/v$V/cui-dsh-plugin-$V.tgz" && echo "$H  p.tgz" | shasum -a 256 -c - && tar xzf p.tgz && ELECTRON_RUN_AS_NODE=1 "/Applications/DeepSeek Harness.app/Contents/MacOS/DeepSeek Harness" package/scripts/manual-install.cjs p.tgz "$H"
+```
+
+Windows PowerShell（先从右下角托盘图标 → 退出，完全关闭 DSH 后再运行）：
+
+```powershell
+$V='1.0.3';$h='1e6a684b521905273dbce8dad28c55f85a4f6aae9fef1a656073caf90e408ae2';$t=Join-Path $env:TEMP ('cui'+[guid]::NewGuid());New-Item -ItemType Directory $t|Out-Null;Set-Location $t;Invoke-WebRequest -UseBasicParsing "https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/download/v$V/cui-dsh-plugin-$V.tgz" -OutFile p.tgz;if((Get-FileHash p.tgz -Algorithm SHA256).Hash -ne $h){throw 'sha256 不匹配'};tar -xzf p.tgz;$exe="$env:LOCALAPPDATA\Programs\DeepSeek Harness\DeepSeek Harness.exe";$env:ELECTRON_RUN_AS_NODE='1';& $exe package\scripts\manual-install.cjs p.tgz $h;Remove-Item Env:ELECTRON_RUN_AS_NODE
+```
+
+注意：Windows 命令中的 `$exe` 是按 DSH 默认安装位置推测的路径（尚未在 Windows 实机验证）；如果 DSH 装在别处，请先改成实际的 `DeepSeek Harness.exe` 路径。装好 1.0.3 后，后续版本可以正常自动更新。
 
 ## 使用与更新
 
@@ -35,4 +51,4 @@ Windows 若报 `ERR_PNPM_UNEXPECTED_STORE`，说明原 Desktop 依赖链接自 p
 
 已有权重分散存放时，使用“添加已有目录”登记多个位置。匹配大小和 SHA256 的文件更新为已校验，保持原位置，不重复下载；清单外的实际权重文件另列本机模型，发现文件不等于已验证来源或运行环境。MACE-MP-0 small 支持固定校验识别，示例 64 atoms 是插件执行限制。计算节点授权、临时许可与队列尚未部署。
 
-原先的 latest 压缩包 URL 会随版本变动而与 pnpm 的锁定校验冲突，原生安装请使用上面的版本固定地址。插件自动更新继续验证签名及固定版本的下载地址，不会跳过校验。
+插件自动更新会验证签名和固定版本的安装包，并从本地已校验文件安装，不会跳过校验。
