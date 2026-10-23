@@ -18,7 +18,7 @@
    $exe="$env:LOCALAPPDATA\Programs\DeepSeek Harness\DeepSeek Harness.exe"; $t=Join-Path $env:TEMP ('cui'+[guid]::NewGuid()); New-Item -ItemType Directory $t|Out-Null; Set-Location $t; Invoke-WebRequest -UseBasicParsing "https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/latest/download/cui-dsh-plugin.tgz" -OutFile p.tgz; Invoke-WebRequest -UseBasicParsing "https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/latest/download/latest.json" -OutFile latest.json; $env:ELECTRON_RUN_AS_NODE='1'; $h=& $exe -e "console.log(JSON.parse(JSON.parse(require('fs').readFileSync('latest.json','utf8')).payload).asset.sha256)"; tar -xzf p.tgz; & $exe package\scripts\manual-install.cjs p.tgz $h; Remove-Item Env:ELECTRON_RUN_AS_NODE
    ```
 
-   运行前确认终端里没有设置 `DSH_HOME`。**不要在“插件 → 添加插件”里直接粘贴 https 安装包链接**：DSH 当前的 pnpm 对远程链接可能写出缺少 integrity 的锁定记录（`ERR_PNPM_MISSING_TARBALL_INTEGRITY`），之后插件就无法再更新；上面的命令先下到本地再装，正好避开。
+   运行前确认终端里没有设置 `DSH_HOME`。也可以复制[首页提供的安装包链接](https://github.com/xiuxiudebobo/cui-dsh-plugin-releases#快速安装)，在「插件 → 右上角添加插件 → 包名或地址」中粘贴安装。部分 DSH/pnpm 版本可能因远程链接出现 `ERR_PNPM_MISSING_TARBALL_INTEGRITY`；遇到此错误请使用首页安装器修复。
 2. 打开 DSH，左侧点击 **Cui Group**，点击连接，在课题组网页完成授权。
 3. 选择账号可用模型并应用。技能界面展示课题组技能及本机/当前工作区技能。点击“管理课题组技能”选择要同步的技能；可复制调用指令，聊天输入 `/` 按需使用。
 4. 科研资源按家族展示。点击“多选下载”后勾选需要的条目或全选，阅读并确认所选许可后点击“下载所选”；后台队列逐项校验。可以更改保存目录，不默认下载整个库。

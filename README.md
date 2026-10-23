@@ -4,7 +4,15 @@
 
 ## 快速安装
 
-先安装官方 DeepSeek Harness Desktop，再下载对应安装器：
+已安装 DSH：复制下面整行链接，打开 **插件 → 右上角「添加插件」→ 粘贴到「包名或地址」→ 安装**，按提示重启。
+
+```text
+https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/download/v1.1.7/cui-dsh-plugin-1.1.7.tgz
+```
+
+如遇 `ERR_PNPM_MISSING_TARBALL_INTEGRITY` 或更新失败，使用下方安装器修复。需要一并检查／补装插件市场和 Mnemon，也请使用安装器。
+
+也可下载安装器：
 
 - **[macOS 安装器](https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/latest/download/Cui-Group-macOS-installer.zip)**：解压，右键 `Install-Cui-Group.command` → 打开；如被拦截，在系统设置「隐私与安全性」中允许打开。
 - **[Windows 安装器](https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/latest/download/Cui-Group-Windows-installer.zip)**：解压，运行 `Install-Cui-Group.cmd`，按提示从菜单或托盘完全退出 DSH。
