@@ -9,7 +9,7 @@
 已安装 DSH：复制下面整行链接，打开 **插件 → 右上角「添加插件」→ 粘贴到「包名或地址」→ 安装**，按提示重启。
 
 ```text
-https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/download/v1.1.10/cui-dsh-plugin-1.1.10.tgz
+https://github.com/xiuxiudebobo/cui-dsh-plugin-releases/releases/download/v1.1.11/cui-dsh-plugin-1.1.11.tgz
 ```
 
 如遇 `ERR_PNPM_MISSING_TARBALL_INTEGRITY` 或更新失败，使用下方安装器修复。
